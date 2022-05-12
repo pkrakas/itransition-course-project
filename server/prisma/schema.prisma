@@ -27,13 +27,13 @@ model User {
 
 model Collection {
   id     Int @db.UnsignedInt @id @default(autoincrement())
-	name   String
-	description String  @db.Text
-	image   String?
-	topic   Topic @relation(fields: [topicId], references: [name])
+  name   String
+  description String  @db.Text
+  image   String?
+  topic   Topic @relation(fields: [topicId], references: [name])
   topicId String
-	items   Item[]
-	owner   User    @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  items   Item[]
+  owner   User    @relation(fields: [ownerId], references: [id], onDelete: Cascade)
   ownerId Int @db.UnsignedInt
   createdAt DateTime @default(now())
   customFields CustomField[]
@@ -47,29 +47,29 @@ model Topic {
 model Item {
   id	Int @db.UnsignedInt @id @default(autoincrement())
   createdAt  DateTime @default(now())
-	collection Collection  @relation(fields:[collectionId], references: [id], onDelete: Cascade)
-	collectionId Int @db.UnsignedInt
-	comments  Comment[]
-	likes     Like[]
+  collection Collection  @relation(fields:[collectionId], references: [id], onDelete: Cascade)
+  collectionId Int @db.UnsignedInt
+  comments  Comment[]
+  likes     Like[]
   name  String
   tags      Tag[]
-	customFields CustomField[] 
+  customFields CustomField[] 
 
   @@fulltext([name])
 }
 
 enum FieldType {
-   INTEGER
-   STRING
-   TEXT
-   BOOLEAN
-   DATE
+  INTEGER
+  STRING
+  TEXT
+  BOOLEAN
+  DATE
 }
 
 model CustomField {
-	id     Int @db.UnsignedInt @id @default(autoincrement())
+  id     Int @db.UnsignedInt @id @default(autoincrement())
   name   String
-	type   FieldType
+  type   FieldType
   value  String?
   item   Item?   @relation(fields: [itemId], references: [id], onDelete: Cascade)
   itemId Int? @db.UnsignedInt
@@ -81,29 +81,29 @@ model CustomField {
 
 
 model Comment {
-   id	       Int  @db.UnsignedInt @id @default(autoincrement())	
-   message   String
-   createdAt DateTime @default(now())
-   author    User @relation(fields: [authorId], references: [id], onDelete: Cascade)
-   authorId  Int  @db.UnsignedInt
-   item      Item @relation(fields: [itemId], references: [id], onDelete: Cascade)
-   itemId    Int  @db.UnsignedInt
+  id	       Int  @db.UnsignedInt @id @default(autoincrement())	
+  message   String
+  createdAt DateTime @default(now())
+  author    User @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  authorId  Int  @db.UnsignedInt
+  item      Item @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  itemId    Int  @db.UnsignedInt
 
-   @@fulltext([message])
+  @@fulltext([message])
 }
 
 model Like {
-   id	        Int  @db.UnsignedInt @id @default(autoincrement())	
-   createdAt  DateTime @default(now())
-   author     User @relation(fields: [authorId], references: [id], onDelete: Cascade)
-   authorId   Int  @db.UnsignedInt
-   item       Item @relation(fields: [itemId], references: [id], onDelete: Cascade)
-   itemId     Int  @db.UnsignedInt
+  id	        Int  @db.UnsignedInt @id @default(autoincrement())	
+  createdAt  DateTime @default(now())
+  author     User @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  authorId   Int  @db.UnsignedInt
+  item       Item @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  itemId     Int  @db.UnsignedInt
 }
 
 model Tag {
-	id       Int  @db.UnsignedInt @id @default(autoincrement())	
-	name     String
+  id       Int  @db.UnsignedInt @id @default(autoincrement())	
+  name     String
   item     Item @relation(fields: [itemId], references: [id], onDelete: Cascade)
   itemId   Int  @db.UnsignedInt
   author   User @relation(fields: [authorId], references: [id], onDelete: Cascade)
