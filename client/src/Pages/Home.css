@@ -1,0 +1,7 @@
+.tag-cloud-tag {
+    transition: all .2s ease-in-out;
+}
+.tag-cloud-tag:hover {
+    cursor: pointer;
+    transform: scale(1.1)
+}

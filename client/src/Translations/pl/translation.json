@@ -1,0 +1,57 @@
+{
+    "title": "Witaj świecie",
+    "navbar" : {
+        "search" : "Szukaj",
+        "login" : "Zaloguj się",
+        "register" : "Zarejestruj się",
+        "createCollection" : "Utwórz kolekcję",
+        "myCollections": "Moje kolekcje"
+    },
+    "auth" : {
+        "emailAddress": "Adres email",
+        "password": "Hasło",
+        "login": "Zaloguj się",
+        "registerInstead": "Zarejestruj się",
+        "enterEmail": "Wprowadź adres email",
+        "loginWithGoogle": "Zaloguj się z Google",
+        "loginWithFacebook": "Zaloguj się z Facebook"
+    },
+    "pages": {
+        "home": {
+            "latestItems": "Ostatnie przedmioty",
+            "biggestCollections": "Największe kolekcje",
+            "tagCloud": "Chmura tagów",
+            "author": "Autor"
+        },
+        "collections": {
+            "myCollections" : "Moje kolekcje",
+            "createNew": "Utwórz kolekcję",
+            "edit": "Edytuj kolekcję",
+            "dropImage": "Przeciągnij i upuść zdjęcie",
+            "name": "Nazwa",
+            "enterName": "Wpisz nazwę kolekcji",
+            "topic": "Temat",
+            "submit": "Zatwierdź",
+            "addNewItem": "Dodaj przedmiot"
+        },
+        "item": {
+            "leaveCommentButton": "Zostaw komentarz"
+        },
+        "search": {
+            "results": "Wyniki wyszukiwania dla: "
+        }
+    },
+    "topics": {
+        "art": "Sztuka",
+        "books": "Książki",
+        "botany": "Botanika",
+        "clothing": "Odzież",
+        "furniture": "Meble",
+        "jewelry": "Biżuteria"
+    },
+    "misc": {
+        "deleteCollectionPopup": "Czy napewno chcesz usunąć kolekcję?",
+        "edit": "Edytuj",
+        "delete": "Usuń"
+    }
+}

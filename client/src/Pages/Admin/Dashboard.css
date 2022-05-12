@@ -1,0 +1,7 @@
+.toolbar {
+    margin-bottom: 10px;
+}
+
+.toolbar > * {
+    margin-right: 5px;
+}

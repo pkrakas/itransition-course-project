@@ -1,0 +1,112 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["fullTextSearch", "fullTextIndex"]
+}
+
+datasource db {
+  provider          = "mysql"
+  url               = env("CLEARDB_DATABASE_URL")
+  shadowDatabaseUrl = env("CLEARDB_JADE_URL")
+}
+
+model User {
+  id            Int @db.UnsignedInt      @default(autoincrement()) @id
+  email         String                   @unique
+  password      String? @db.TinyText
+  isAdmin       Boolean                  @default(false)
+  isBlocked     Boolean                  @default(false)
+  collections   Collection[]
+  likes         Like[]   
+  comments      Comment[]
+  tags          Tag[]
+  createdAt DateTime @default(now())
+}
+
+model Collection {
+  id     Int @db.UnsignedInt @id @default(autoincrement())
+	name   String
+	description String  @db.Text
+	image   String?
+	topic   Topic @relation(fields: [topicId], references: [name])
+  topicId String
+	items   Item[]
+	owner   User    @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  ownerId Int @db.UnsignedInt
+  createdAt DateTime @default(now())
+  customFields CustomField[]
+}
+
+model Topic {
+  name String  @id
+  collection Collection[]
+}
+
+model Item {
+  id	Int @db.UnsignedInt @id @default(autoincrement())
+  createdAt  DateTime @default(now())
+	collection Collection  @relation(fields:[collectionId], references: [id], onDelete: Cascade)
+	collectionId Int @db.UnsignedInt
+	comments  Comment[]
+	likes     Like[]
+  name  String
+  tags      Tag[]
+	customFields CustomField[] 
+
+  @@fulltext([name])
+}
+
+enum FieldType {
+   INTEGER
+   STRING
+   TEXT
+   BOOLEAN
+   DATE
+}
+
+model CustomField {
+	id     Int @db.UnsignedInt @id @default(autoincrement())
+  name   String
+	type   FieldType
+  value  String?
+  item   Item?   @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  itemId Int? @db.UnsignedInt
+  collection Collection  @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+  collectionId Int @db.UnsignedInt
+
+  @@fulltext([value])
+}
+
+
+model Comment {
+   id	       Int  @db.UnsignedInt @id @default(autoincrement())	
+   message   String
+   createdAt DateTime @default(now())
+   author    User @relation(fields: [authorId], references: [id], onDelete: Cascade)
+   authorId  Int  @db.UnsignedInt
+   item      Item @relation(fields: [itemId], references: [id], onDelete: Cascade)
+   itemId    Int  @db.UnsignedInt
+
+   @@fulltext([message])
+}
+
+model Like {
+   id	        Int  @db.UnsignedInt @id @default(autoincrement())	
+   createdAt  DateTime @default(now())
+   author     User @relation(fields: [authorId], references: [id], onDelete: Cascade)
+   authorId   Int  @db.UnsignedInt
+   item       Item @relation(fields: [itemId], references: [id], onDelete: Cascade)
+   itemId     Int  @db.UnsignedInt
+}
+
+model Tag {
+	id       Int  @db.UnsignedInt @id @default(autoincrement())	
+	name     String
+  item     Item @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  itemId   Int  @db.UnsignedInt
+  author   User @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  authorId Int  @db.UnsignedInt
+  @@fulltext([name])
+}

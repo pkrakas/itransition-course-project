@@ -1,0 +1,57 @@
+{
+    "title": "Hello world",
+    "navbar": {
+        "search": "Search",
+        "login": "Login",
+        "register": "Register",
+        "createCollection": "Create collection",
+        "myCollections": "My collections"
+    },
+    "auth": {
+        "emailAddress": "Email address",
+        "password": "Password",
+        "login": "Login",
+        "registerInstead": "Register instead",
+        "enterEmail": "Enter email",
+        "loginWithGoogle": "Login with Google",
+        "loginWithFacebook": "Login with Facebook"
+    },
+    "pages": {
+        "home": {
+            "latestItems": "Latest items",
+            "biggestCollections": "Biggest collections",
+            "tagCloud": "Tag cloud",
+            "author": "Author"
+        },
+        "collections": {
+            "myCollections": "My collections",
+            "createNew": "Create new collection",
+            "edit": "Edit collection",
+            "dropImage": "Drag and drop image",
+            "name": "Name",
+            "enterName": "Enter collection name",
+            "topic": "Topic",
+            "submit": "Submit",
+            "addNewItem": "Add new item"
+        },
+        "item": {
+            "leaveCommentButton": "Leave a comment"
+        },
+        "search": {
+            "results": "Search results for: "
+        }
+    },
+    "topics": {
+        "art": "Art",
+        "books": "Books",
+        "botany": "Botany",
+        "clothing": "Clothing",
+        "furniture": "Furniture",
+        "jewelry": "Jewelry"
+    },
+    "misc": {
+        "deleteCollectionPopup": "Are you sure you want to delete a collection?",
+        "edit": "Edit",
+        "delete": "Delete"
+    }
+}

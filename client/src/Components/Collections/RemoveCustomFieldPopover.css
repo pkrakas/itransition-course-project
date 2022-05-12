@@ -1,0 +1,6 @@
+.overlay-trigger-button-red:hover {
+    cursor: pointer;
+    background-color: #DC3545;
+    color: white;
+    border-radius: 5px;
+}

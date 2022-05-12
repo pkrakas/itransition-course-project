@@ -1,0 +1,25 @@
+.register-form-container {
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.register-form {
+    padding: 25px;
+    width: 325px;
+    box-shadow: 1px 1px 5px #AAA;
+}
+
+.submit-area {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#bootstrap-override .text-muted.form-text {
+    margin-bottom: 5px;
+    color: red!important;
+    margin-top: -10px;
+}
