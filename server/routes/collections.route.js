@@ -245,6 +245,11 @@ router.post('/:collectionId/new-item', auth, owner, async (req, res) => {
 
     await Promise.all(result1)
 
+    if(!data.customFields) {
+        res.send()
+        return;
+    }
+
     const result2 = Object.keys(data.customFields).map(async field => {
         if (typeof data.customFields[field] === 'boolean')
             data.customFields[field] = data.customFields[field] ? 'true' : 'false'
