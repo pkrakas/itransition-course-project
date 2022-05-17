@@ -11,6 +11,7 @@ import { AiFillDelete } from 'react-icons/ai'
 import BootstrapTable from 'react-bootstrap-table-next';
 import ToolkitProvider from 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit';
 import filterFactory, { textFilter, numberFilter } from 'react-bootstrap-table2-filter'
+import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css';
 import paginationFactory from 'react-bootstrap-table2-paginator'
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit.min.css';
@@ -33,7 +34,9 @@ const defaultColumns = [
         sortFunc: ((a, b, order) => order === 'desc' ?
             a.props.children.localeCompare(b.props.children) :
             b.props.children.localeCompare(a.props.children)),
-        csvFormatter: field => field.props.children
+        csvFormatter: field => field.props.children,
+        
+        // filter: textFilter()
     }, {
         dataField: 'tags',
         text: 'Tags',

@@ -66,7 +66,7 @@ export const NavBar = () => {
                                     style={{ cursor: 'pointer' }}
                                 />
                                 {!user.isAuthenticated && <Link to='/login'><Button className="mx-2">{t('navbar.login')}</Button></Link>}
-                                {!user.isAuthenticated && <Button variant="secondary">{t('navbar.register')}</Button>}
+                                {!user.isAuthenticated && <Link to='/register'><Button variant="secondary">{t('navbar.register')}</Button></Link>}
                                 {user.isAuthenticated && <div className="d-flex">
                                     <Link to="/collections/new" className="d-none d-xl-block">
                                         <Button variant="primary" className="ms-3">
