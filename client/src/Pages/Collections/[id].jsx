@@ -98,7 +98,15 @@ export default function Collection() {
             setCustomFields(data.collection.customFields)
             setColumns([
                 ...defaultColumns,
-                ...data.collection.customFields?.map(f => { return { dataField: f.name, text: f.name, sort: true } })
+                ...data.collection.customFields?.map(f => { 
+                        return { 
+                            dataField: f.name, 
+                            text: f.name, 
+                            sort: true, 
+                            csvFormatter: field => field.type === 'input' ? field.props.checked : field
+                        } 
+                    }
+                )
             ])
             const newItems = data.items.map(item => {
                 const customFields = item.customFields.map(c => {
